@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx
+    xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+    <head>
+        <meta name="cover" content="cover"/>
+    </head>
+    <docTitle>
+        <text>Book Name</text>
+    </docTitle>
+    <navMap>
+
+        # Table of contents
+        <navPoint id="table_of_contents" playOrder="1">
+            <navLabel>
+                <text>Table of content</text>
+            </navLabel>
+            <content src="table_of_contents.xhtml#title1"/>
+
+            # Subchapter in Table of contents
+            <navPoint id="sect1-idm46027925493776" playOrder="2">
+                <navLabel>
+                    <text>Subchapter of the table of content</text>
+                </navLabel>
+                <content src="table_of_contents.xhtml#title2"/>
+            </navPoint>
+        </navPoint>
+
+        # Chapter 1
+        <navPoint id="chapter1" playOrder="3">
+            <navLabel>
+                <text>Chapter 1 name</text>
+            </navLabel>
+            <content src="ch1.xhtml"/>
+        </navPoint>
+    </navMap>
+</ncx>
