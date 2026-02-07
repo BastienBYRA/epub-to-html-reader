@@ -30,7 +30,7 @@ Open an issue with your issue, provide logs and what you've done step by step to
         - [x] HTML modifier to add custom HTML in HTML page
         - [ ] CLI part with argument and the docs associated
     - [ ] Create the Dockerfile to ship the project
-    - [ ] Create a BOOK_INFO.txt + some after decompiling the EPUB so the user know which file is the first page of the book (+ in BOOK_INFO.txt which file refer to which chapter)
+    - [x] Create a BOOK_NOTICE.txt + some after decompiling the EPUB so the user know which file is the first page of the book (+ in BOOK_NOTICE.txt which file refer to which chapter)
     - [ ] Create all the logging stuff so user can know if it's good or if there is a problem (setup DEBUG env)
     - [ ] Create the doc of the app in the README.md
 

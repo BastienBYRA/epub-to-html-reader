@@ -11,6 +11,7 @@ from models import NcxBook
 from parsers.ncx_parser import ncx_parser
 
 logger = logging.getLogger(__name__)
+logging.basicConfig(level = logging.INFO)
 
 def convert_epub_to_zip(filepath: str, output_directory: str | None = "output", book_uuid: uuid.UUID = uuid.uuid4()):
     # Check the file exist
@@ -66,7 +67,6 @@ def convert_epub_to_zip(filepath: str, output_directory: str | None = "output", 
 
 def convert_zip_to_html():
     return True
-
 
 def convert_epub_to_html():
     """
