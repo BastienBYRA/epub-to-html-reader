@@ -89,6 +89,7 @@ def add_select_to_pages(selector: dict[str, NcxChapter], output_directory: str):
 '''
 
     previous_chapter: int = 0
+    book_notice_content: str = ""
 
     # Iterate through all the key;value to get the filepath for each chapter
     for filename, _ in selector.items():
@@ -105,7 +106,7 @@ def add_select_to_pages(selector: dict[str, NcxChapter], output_directory: str):
         for _filename, chapter in selector.items():
             if filename == _filename:
                 html_options += f"<option selected=\"true\" value=\"/{filepath_html}\">{chapter.title}</option>"
-                
+                book_notice_content += f"{chapter.title} -> {filepath_html}\n"
             else:
                 _filepath: Path = Path(str(get_html_file(_filename, output_directory)).replace("\\", "/"))
                 _filepath_html = str(_filepath).replace("\\", "/")
@@ -139,6 +140,14 @@ def add_select_to_pages(selector: dict[str, NcxChapter], output_directory: str):
         with open(filepath, "a", encoding="utf-8") as chapter_file:
             chapter_file.write(html_div)
             chapter_file.write(HTML_SELECT_CSS)
+
+    # Create a BOOK_NOTICE.txt file with information about each chapter and the file related
+    with open(f"{output_directory}/BOOK_NOTICE.txt", "w", encoding="utf-8") as book_notice_file:
+        book_notice_file.write(book_notice_content)
+
+    logger.info("The decompression of the EPUB fine is done!\n" \
+    f"You can find the page related to every chapter in the {output_directory}/BOOK_NOTICE.txt file.")
+    logger.info(f"The first chapter: [{book_notice_content.split("\n")[0]}]")
 
 
 def get_html_file(filename: str, output_directory: str) -> Path:
