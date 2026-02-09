@@ -4,16 +4,20 @@ from pathlib import Path
 import shutil
 import uuid
 from zipfile import ZipFile
-import xml.etree.ElementTree as ET
 
 from html_modifier import convert_xhtml_to_html
-from models import NcxBook
 from parsers.ncx_parser import ncx_parser
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level = logging.INFO)
 
-def convert_epub_to_zip(filepath: str, output_directory: str | None = "output", book_uuid: uuid.UUID = uuid.uuid4()):
+def converter(filepath: str, output_directory: str | None):
+    '''
+    Convert an EPUB file to a collection of HTML files with some additionnal HTML/CSS for easier navigation
+    '''
+    
+    book_uuid: uuid.UUID = uuid.uuid4()
+    
     # Check the file exist
     path = Path(filepath)
     if not path or not path.exists():
@@ -63,20 +67,3 @@ def convert_epub_to_zip(filepath: str, output_directory: str | None = "output", 
 
     # ncx parser
     ncx_parser(book_uuid, output_directory)
-
-
-def convert_zip_to_html():
-    return True
-
-def convert_epub_to_html():
-    """
-    Basically, an EPUB file is a collection of HTML with some other file
-    So we just need to convert it from EPUB to ZIP and unzip it to get the HTML files
-    (Well, the HTML have trash name so we can't then just get the chapter we want...)
-    """
-
-    return True
-
-
-if __name__ == "__main__":
-    convert_epub_to_zip("book.epub")
