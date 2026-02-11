@@ -8,6 +8,9 @@ app = typer.Typer(
     short_help="EPUB to HTML converter",
     add_help_option=True,
     name="Etohr",
+    suggest_commands=True,
+    rich_markup_mode=None,
+    pretty_exceptions_enable=False
 )
 
 PROJECT_VERSION="0.1.0"
