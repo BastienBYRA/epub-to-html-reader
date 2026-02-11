@@ -15,9 +15,11 @@ PROJECT_VERSION="0.1.0"
 @app.command()
 def convert(
     filepath: Annotated[str, typer.Option(
+        "-f", "--filepath",
         help="Filepath to the EPUB file",
         envvar="ETOHR_BOOK")], 
     output_directory: Annotated[str | None, typer.Option(
+        "-o", "--output-directory",
         help="Output folder for the EPUB file", 
         envvar="ETOHR_OUTPUT_DIRECTORY")] = "output"):
     '''
