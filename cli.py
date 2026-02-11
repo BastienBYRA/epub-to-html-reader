@@ -7,21 +7,19 @@ app = typer.Typer(
     help="EPUB to HTML converter with some custom HTML/CSS so it's easy to navigate between chapters",
     short_help="EPUB to HTML converter",
     add_help_option=True,
-    name="Etotr",
-    suggest_commands=True
+    name="Etohr",
 )
 
 PROJECT_VERSION="0.1.0"
 
 @app.command()
-def convert(filepath: Annotated[str, typer.Argument(
-                help="The filepath where the EPUB file is (ex: ./book.epub)", 
-                envvar="ETOTR_BOOK")
-            ], 
-            output_directory: Annotated[str | None, typer.Argument(
-                help="The folder in which the HTML files will be (ex: ./output)", 
-                envvar=["ETOTR_OUTPUT_DIRECTORY", "ETOTR_OUTPUT_FOLDER"])
-            ] = "output"):
+def convert(
+    filepath: Annotated[str, typer.Option(
+        help="Filepath to the EPUB file",
+        envvar="ETOHR_BOOK")], 
+    output_directory: Annotated[str | None, typer.Option(
+        help="Output folder for the EPUB file", 
+        envvar="ETOHR_OUTPUT_DIRECTORY")] = "output"):
     '''
     Convert an EPUB file to a collection of HTML files with some additionnal HTML/CSS for easier navigation
     '''
